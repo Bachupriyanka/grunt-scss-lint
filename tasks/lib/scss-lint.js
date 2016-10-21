@@ -1,3 +1,4 @@
+//added html reporter specific code
 var _ = require('lodash'),
     chalk = require('chalk'),
     reporter = require('scss-lint-html-reporter'),
