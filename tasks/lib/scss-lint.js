@@ -1,4 +1,3 @@
-//added html reporter specific code
 var _ = require('lodash'),
     chalk = require('chalk'),
     reporter = require('scss-lint-html-reporter'),
@@ -257,6 +256,11 @@ exports.init = function (grunt) {
           writeReport(options.reporterOutput, grunt.log.uncolor(rawResults), format);
         }else{
           var jsonObj = grunt.file.read(options.reporterOutput);
+          var lintReport = JSON.parse(jsonObj);
+          var lintReportKeys = Object.keys(lintReport);
+          if(lintReportKeys.length){
+            failed = true;
+          }
           var generatingReport = true;
           process.argv.push('-o');
           process.argv.push(options.reporterOutput);
